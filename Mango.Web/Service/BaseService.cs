@@ -15,13 +15,13 @@ namespace Mango.Web.Service
         }
         public async Task<Response?> SendAsync(Request request)
         {
-            HttpClient client= _httpClientFactory.CreateClient("MangoAPI");
+            HttpClient client = _httpClientFactory.CreateClient("MangoAPI");
             HttpRequestMessage message = new();
             message.Headers.Add("Content-Type", "application/json");
             message.RequestUri = new Uri(request.ApiUrl);
-            if(request.Data != null)
+            if (request.Data != null)
             {
-              message.Content = new StringContent(JsonConvert.SerializeObject(request.Data),Encoding.UTF8, "application/json");
+                message.Content = new StringContent(JsonConvert.SerializeObject(request.Data), Encoding.UTF8, "application/json");
             }
             HttpResponseMessage? apiResponse = null;
             switch (request.ApiType)
@@ -87,7 +87,8 @@ namespace Mango.Web.Service
                 };
                 return dto;
             }
-            }
         }
     }
 }
+
+
